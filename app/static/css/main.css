@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@300;400;700&family=Merriweather&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Sen', arial, sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+    color: darkslategrey;
+}
+
+nav.bg-light {
+    border-bottom: 2px solid #7C4DFF;
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
+}
+
+li.nav-item {
+    padding: 6px 17px;
+    margin: 3px 8px;
+    color: rgb(110,110,110);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+li.nav-item:hover {
+    color: rgb(50,50,50);
+}
+
+li.nav-item.important {
+    background-color: #7C4DFF;
+    color: white;
+    border-radius: 5px;
+}
+li.nav-item.important:hover {
+    background-color: #651FFF;
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
+}
+
+li.nav-item a {
+    color: inherit;
+}
+
+nav .logo a {
+    color: #7C4DFF;
+}
+nav .logo > a > span {
+    margin: 5px;
+    font-family: 'Merriweather', serif;
+}
+
+nav .logo > a > span > span {
+    font-weight: bold;
+    color: #651FFF;
+    font-style: none !important;
+}
+
+.login-form, .error-container, .gradient .container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+}
+
+.error-container h1:not(.main) {
+    color: grey;
+    font-style: italic;
+}
+
+.error-container h1.main {
+    color: coral;
+    font-size: 70px;
+    margin: 25px auto;
+    font-weight: bold;
+}
+
+.login-form h3 {
+    color: rgb(50,50,50);
+    margin: 20px 0;
+    font-weight: bold;
+}
+.login-form .divider {
+    margin-bottom: 30px;
+}
+
+form {
+    margin: 20px auto;
+}
+
+form input {
+    margin: 20px 0;
+    max-width: 100%;
+}
+
+form input[type=text], form input[type=password] {
+    border: 0.3px solid grey;
+}
+
+form input[type=text]:focus, form input[type=password]:focus {
+    box-shadow: none;
+    border: 0.3px solid #651FFF;
+    color: #7C4DFF;
+}
+
+
+form input[type=submit], form button[type=submit] {
+    margin: 5px 0;
+}
+
+.cta {
+    color: white;
+    border-style: hidden;
+    border-radius: 5px;
+    background-color: #651FFF;
+}
+
+form .cta {
+    width: 100%;
+    padding: 7px 0;
+}
+
+.gradient {
+    background: linear-gradient(45deg, #7C4DFF, #536DFE);
+}
+
+.gradient .container {
+    color: white;
+}
+
+.gradient button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 7px 20px;
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+}
+.gradient button:hover, .gradient button.active {
+    background-color: white;
+    color: #536DFE;
+}
+.gradient button:hover {
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
+}
+
+.gradient .container {
+    width: 700px;
+    top: 45%;
+}
+
+.gradient .container .row {
+    margin: 10px auto;
+}
+
+.gradient .container *:not(button) {
+    text-align: center;
+    width: 100%;
+}
+
+.gradient h1 {
+    font-weight: bold;
+}
+
+.gradient .container img {
+    height: 80px;
+    margin: 30px auto;
+    width: auto !important;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
