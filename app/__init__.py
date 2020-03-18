@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from flask_sqlalchemy import SQLAlchemy
-
+from werkzeug import secure_filename
 
 app = Flask(__name__)
 
@@ -13,17 +13,17 @@ db = SQLAlchemy(app)
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html'), 404
+    return render_template('404.html', session=session), 404
 
 
 @app.errorhandler(500)
 def server_error(error):
-    return render_template('500.html'), 500
+    return render_template('500.html', session=session), 500
 
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', session=session)
 
 
 

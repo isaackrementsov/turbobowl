@@ -6,6 +6,10 @@ body, html {
     font-family: 'Sen', arial, sans-serif;
 }
 
+button:focus, input:focus {
+    outline: none;
+}
+
 a:hover {
     text-decoration: none;
     color: darkslategrey;
@@ -16,6 +20,37 @@ nav.bg-light {
     box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
 }
 
+nav.bg-dark {
+    background-color: transparent !important;
+}
+
+nav.bg-dark .logo > a > span {
+    color: whitesmoke;
+}
+
+nav.bg-dark .logo > a > span > span {
+    color: white;
+}
+
+nav.bg-dark .nav-item {
+    color: whitesmoke;
+}
+
+nav.bg-dark .nav-item:hover {
+    color: white;
+}
+
+nav.bg-dark .nav-item.important {
+    border: 1px solid whitesmoke;
+    background: transparent;
+}
+
+nav.bg-dark .nav-item.important:hover {
+    box-shadow: none;
+    background: white;
+    color: #651FFF;
+}
+
 li.nav-item {
     padding: 6px 17px;
     margin: 3px 8px;
@@ -24,22 +59,49 @@ li.nav-item {
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
+
 li.nav-item:hover {
     color: rgb(50,50,50);
 }
 
 li.nav-item.important {
-    background-color: #7C4DFF;
+    background: linear-gradient(45deg, #7C4DFF, #536DFE);
     color: white;
     border-radius: 5px;
 }
+
 li.nav-item.important:hover {
-    background-color: #651FFF;
+    background: linear-gradient(315deg, #7C4DFF, #536DFE);
     box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
 }
 
 li.nav-item a {
     color: inherit;
+}
+
+li.nav-item.avatar {
+    padding: 0;
+    margin: 0 5px;
+    margin-left: 20px;
+    border-radius: 100%;
+    border: 1.5px solid transparent;
+    transition: 0.2s ease-in-out;
+}
+
+li.nav-item.avatar:hover {
+    border-color: #8C9EFF;
+}
+
+li.nav-item.avatar img {
+    height: 42px;
+    border-radius: 100%;
+}
+
+.bg-dark li.nav-item.avatar {
+    border-color: #8C9EFF;
+}
+.bg-dark li.nav-item.avatar:hover {
+    border-color: white;
 }
 
 nav .logo a {
@@ -58,7 +120,7 @@ nav .logo > a > span > span {
 
 .login-form, .error-container, .gradient .container {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -94,13 +156,60 @@ form input {
     max-width: 100%;
 }
 
+form .file-input input[type=file] {
+    display: none;
+}
+
+.file-input {
+    border-radius: 5px;
+    width: 100%;
+    color: grey;
+    background-color: whitesmoke;
+    text-align: left;
+    transition: 0.2s ease-in-out;
+}
+
+.file-input:hover, .file-input:focus, .file-input:active {
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.05);
+}
+
+.file-input span {
+    padding: 7px 10px;
+    display: inline-block;
+}
+
+.file-input span:nth-child(2) {
+    background: linear-gradient(45deg, #8C9EFF, #651FFF);
+    color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    height: 100%;
+}
+
+span.avatar-preview {
+    padding: 0;
+    float: right;
+}
+
+.avatar-preview img {
+    height: 40px;
+    max-width: 80px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+form:nth-last-child(1) .file-input {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
 form input[type=text], form input[type=password] {
-    border: 0.3px solid grey;
+    border: 0.5px solid lightgrey;
 }
 
 form input[type=text]:focus, form input[type=password]:focus {
     box-shadow: none;
-    border: 0.3px solid #651FFF;
+    border: 0.5px solid #651FFF;
     color: #7C4DFF;
 }
 
@@ -129,7 +238,7 @@ form .cta {
     color: white;
 }
 
-.gradient button {
+.gradient a.button {
     background-color: transparent;
     color: white;
     border: 2px solid white;
@@ -139,11 +248,11 @@ form .cta {
     font-weight: bold;
     transition: 0.2s ease-in-out;
 }
-.gradient button:hover, .gradient button.active {
+.gradient a.button:hover, .gradient a.button.active {
     background-color: white;
     color: #536DFE;
 }
-.gradient button:hover {
+.gradient a.button:hover {
     box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -156,7 +265,7 @@ form .cta {
     margin: 10px auto;
 }
 
-.gradient .container *:not(button) {
+.gradient .container *:not(.button) {
     text-align: center;
     width: 100%;
 }
@@ -166,13 +275,71 @@ form .cta {
 }
 
 .gradient .container img {
-    height: 80px;
+    height: 120px;
     margin: 30px auto;
     width: auto !important;
 }
 
-.flex-row {
+.flex-row, .flex-row-start {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.flex-row-start {
+    justify-content: flex-start;
+}
+
+.error {
+    color: #FF5252;
+}
+
+#avatar-menu {
+    display: none;
+    width: 140px;
+    float: right;
+    z-index: 2;
+    position: relative;
+    margin-top: -5px;
+    margin-right: 5px;
+    background-color: white;
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+#avatar-menu li.nav-item {
+    margin: 0;
+    padding: 10px 15px;
+}
+
+#avatar-menu li.nav-item:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#avatar-menu li.nav-item:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#avatar-menu li.nav-item:hover {
+    background-color: whitesmoke;
+}
+
+.profile {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile h3, p {
+    text-align: center;
+    width: 100%;
+}
+
+.profile-avatar img {
+    height: 190px;
+    border-radius: 5px;
+    margin: 20px auto;
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,0.2);
 }

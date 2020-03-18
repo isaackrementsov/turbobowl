@@ -5,30 +5,14 @@
         <h3>Welcome Back!</h3>
         <p>Don't have an account yet? <a href="/user/signup">Signup</a></p>
 
-        {% with errors = get_flashed_messages(category_filter=["error"]) %}
-            {% if errors %}
-                <div>
-                    {% for error in errors %}
-                        <p class="error">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+        {% include 'partials/errors.html' %}
 
-        {% if form.errors %}
-            <div>
-                {% for field, error in form.errors.items() %}
-                    {% for e in error %}
-                        <p class="error">{{ e }}</p>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-        {% endif %}
+        {{ macros.show_form_errors(form) }}
 
         <hr class="divider">
         <form method="POST" action="." accept-charset="UTF-8" role="form" class="form">
             {{ form.csrf_token }}
-            {{ macros.render_field(form.emailOrUsername, placeholder="Username or Password", autofocus="") }}
+            {{ macros.render_field(form.emailOrUsername, placeholder="Username or Email", autofocus="") }}
             {{ macros.render_field(form.password, placeholder="Password") }}
             <button type="submit" name="submit" class="cta">Login</button>
         </form>

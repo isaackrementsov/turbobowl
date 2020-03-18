@@ -1,0 +1,32 @@
+{% import 'partials/macros.html' as macros %}
+
+{% include 'partials/header.html' %}
+    <div class="container login-form text-center">
+        <h3>Create an New Account</h3>
+
+        {% include 'partials/errors.html' %}
+
+        {{ macros.show_form_errors(form) }}
+
+        <hr class="divider">
+        <form method="POST" action="." accept-charset="UTF-8" role="form" class="form" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+
+            {{ macros.render_field(form.email, placeholder="Email", autofocus="") }}
+            {{ macros.render_field(form.username, placeholder="Username", autofocus="") }}
+            {{ macros.render_field(form.password, placeholder="Password") }}
+            {{ macros.render_field(form.avatar, placeholder="Upload Avatar", form_type="file-input", outer_id="avatar-input") }}
+
+            <button type="submit" name="submit" class="cta">Sign Up</button>
+        </form>
+    </div>
+    <script src="/static/js/form-utils.js"></script>
+    <script>
+        $('#avatar-input input').on('input', function(){
+            previewImage($('#avatar-input').find('input')[0], e => {
+                $('#avatar-input').append(`<span class="avatar-preview"><img src="${e.target.result}"></span>`);
+            });
+        });
+    </script>
+{% include 'partials/footer.html' %}

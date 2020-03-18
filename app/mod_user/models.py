@@ -17,8 +17,12 @@ class User(Base):
     avatar = db.Column(db.String(256), nullable=False, default=DEFAULT_AVATAR)
 
     @staticmethod
-    def findByEmailorUsername(identifer):
+    def find_by_email_or_username(identifer):
         return User.query.filter(db.or_(User.username == identifer, User.email == identifer)).first()
+
+    @staticmethod
+    def matches_id(id):
+        return User.query.get(id) is not None
 
 
 class School(Base):
