@@ -26,7 +26,7 @@ class SignupForm(FlaskForm):
         filename_original = self.avatar.data.filename
         ext = filename_original.split('.')[-1]
 
-        filename_new = str(uuid.uuid4()) + ext
+        filename_new = str(uuid.uuid4()) + '.' + ext
 
         self.avatar.data.save(os.path.join(current_app.config['BASE_DIR'], 'app/static/img/upload', filename_new))
 

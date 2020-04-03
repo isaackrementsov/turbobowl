@@ -1,11 +1,169 @@
-{% include 'partials/header.html' %}
-<div class="container profile row">
-    <div class="col-sm-6">
-        <div class="row profile-avatar"><img src="/static/img/upload/{{user.avatar}}"></div>
-        <div class="row info"><h3>{{user.username}}</h3></div>
-    </div>
-    <div class="col-sm-6">
-        <div class="row">Add your favorite categories</div>
-    </div>
-</div>
-{% include 'partials/footer.html' %}
+<html>
+    {% include 'partials/head.html' %}
+    <body>
+        <div class="gradient-half"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <span class="navbar-brand h1 mb-0" href="#">
+                <div class="logo d-inline-block align-top">
+                    <a href="/">
+                        <img src="/static/img/static/logo-white.png" style="height: 20px; vertical-align: -3px; margin-right: 5px">
+                        <span>Turbo<span>Bowl</span></span>
+                    </a>
+                </div>
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                {% include 'partials/nav-content.html' %}
+            </div>
+        </nav>
+        {% include 'partials/nav-content-2.html' %}
+
+        <div class="flex-row profile">
+            <div class="col-sm-2">
+                <div class="floater floater-right">
+                    <a href="#"><i class="fas fa-user-friends"></i><p>Add friends</p></a>
+                </div>
+            </div>
+            <div class="profile-info col-sm-8">
+                <div class="row">
+                    <div class="col-sm-4 text-center">
+                        <div style="background-image: url(/static/img/upload/{{user.avatar}})" class="img"></div>
+                        <p><b>Champlain Valley Union High School</b></p>
+                        <div class="categories">
+                            <p>Top Categories</p>
+                            <div class="flex-row">
+                                <i class="fas fa-vial"></i>
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                        </div>
+                        <p class="bio">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                    <div class="col-sm-8 text-center">
+                        <div class="header-section">
+                            <h3>{{user.username}}</h3>
+                            <button class="friend"><span>Add Friend</span></button>
+                        </div>
+                        <hr>
+                        <div class="flex-row stats">
+                            <div>
+                                <h4>Tossups</h4>
+                                <p>167</p>
+                            </div>
+                            <div>
+                                <h4>Powers</h4>
+                                <p>20</p>
+                            </div>
+                            <div>
+                                <h4>Games</h4>
+                                <p>10</p>
+                            </div>
+                        </div>
+                        <h4 class="chart-heading">Scoring Frequency</h4>
+                        <canvas id="chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="floater floater-left">
+                    <a href="#"><i class="fas fa-cogs"></i><p>Change settings</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="half"></div>
+        <script src="/static/js/lib/jquery.min.js"></script>
+        <script src="/static/js/lib/chart.min.js"></script>
+        <script>
+            const ctx = $('#chart');
+            const options = {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        scaleLabel: {display: true, labelString: 'Weeks Ago'},
+                        ticks: {
+                            stepSize: 1
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {display: true, labelString: 'Tossups'},
+                        ticks: {
+                            stepSize: 1
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Example',
+                        showLine: true,
+                        lineTension: 0.3,
+                        pointRadius: 3,
+                        backgroundColor: 'rgba(140,158,255, 0.5)',
+                        borderColor: '#536DFE',
+                        data: [{
+                            x: 0,
+                            y: 0
+                        }, {
+                            x: 1,
+                            y: 1
+                        },
+                        {
+                            x: 2,
+                            y: 4
+                        },
+                        {
+                            x: 3,
+                            y: 2
+                        },
+                        {
+                            x: 4,
+                            y: 2.5
+                        },
+                        {
+                            x: 5,
+                            y: 0
+                        },
+                        {
+                            x: 6,
+                            y: 5
+                        },
+                        {
+                            x: 7,
+                            y: 4
+                        },
+                        {
+                            x: 8,
+                            y: 5
+                        },
+                        {
+                            x: 9,
+                            y: 2
+                        },
+                        {
+                            x: 10,
+                            y: 3
+                        }]
+                    }]
+                },
+                options: options
+            });
+        </script>
+    </body>
+</html>
